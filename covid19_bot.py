@@ -26,7 +26,7 @@ def cancel(update, context):
 
 def echo(update, context):
     """Echo the user message."""
-    print('print from echo')
+    print(update.message.text)
     update.message.reply_text(update.message.text)
 
 def get_data():
