@@ -1,14 +1,11 @@
 import requests
+from call_covid_api import get_covid_data
 
 #import logging
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 token = '1107891137:AAE0111kLRMx5XDUWmrjCcoloov0jZgjVLI'
-
-
-
-
 
 def start(update, context):
     update.message.reply_text(
@@ -26,8 +23,11 @@ def cancel(update, context):
 
 def echo(update, context):
     """Echo the user message."""
-    print(update.message.text)
-    update.message.reply_text(update.message.text)
+    user_message = update.message.text
+    display_data = get_covid_data(user_message)
+    
+    update.message.reply_text(display_data['global_data']['global_deaths'])
+
 
 def get_data():
     print('Message was sent to bot')
