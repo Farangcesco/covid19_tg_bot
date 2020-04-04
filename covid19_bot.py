@@ -1,12 +1,12 @@
 import requests
 from call_covid_api import get_covid_data
 from country_code_list import is_valid_country
+from secret import token
 
 #import logging
 from telegram import (ReplyKeyboardMarkup, ReplyKeyboardRemove)
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
-token = '1107891137:AAE0111kLRMx5XDUWmrjCcoloov0jZgjVLI'
 
 def start(update, context):
     update.message.reply_text(
