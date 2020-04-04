@@ -19,12 +19,12 @@ def get_covid_data(country_code):
     base_url = 'https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code='
     countr_data = requests.get(base_url+country_code)
     country_data_json = countr_data.json()
-    print('API called')
+    #print('API called')
     #data global
     latest_url = base_url.replace('locations?country_code=', 'latest', 1)
     latest_data = requests.get(latest_url)
     latest_json = latest_data.json()
-    print('Global API called')
+    #print('Global API called')
     #global variables
     global_confirmed = latest_json['latest']['confirmed']
     global_deaths = latest_json['latest']['deaths']
@@ -47,7 +47,7 @@ def get_covid_data(country_code):
         'global_p_of_pop_infected': global_confirmed/global_population*100,
         'r_global_p_of_pop_infected': round(global_p_of_pop_infected, 4)
     }
-    print(global_data)
+    #print(global_data)
     #country cariables
 
     country = get_variables_locations('country')
@@ -79,10 +79,10 @@ def get_covid_data(country_code):
         'p_of_pop_infected': confirmed/population*100,
         'r_p_of_pop_infected': round(p_of_pop_infected, 4)
     }
-    print(country_data)
+    #print(country_data)
     return_for_tg = {
         'global_data': global_data,
         'country_data': country_data
     }    
-    print(return_for_tg)
+    #print(return_for_tg)
     return return_for_tg

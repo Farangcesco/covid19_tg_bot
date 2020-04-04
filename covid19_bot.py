@@ -14,7 +14,7 @@ token = '1107891137:AAE0111kLRMx5XDUWmrjCcoloov0jZgjVLI'
 
 def start(update, context):
     update.message.reply_text(
-        'Give me a country to look up for. Has to be ISO country code, like TH, CH, BR'
+        'Give me a country to look up for. It has to be ISO country code, like TH, CH, BR'
     )
  #   return 'Initial'
 
@@ -26,19 +26,29 @@ def cancel(update, context):
 
     return ConversationHandler.END
 
+    
 def echo(update, context):
-    """Echo the user message."""
     user_message = update.message.text
     if is_valid_country(user_message):
         display_data = get_covid_data(user_message)
+        update.message.reply_text('Global Data:')
+        update.message.reply_text('Confirmed Cases')
+        update.message.reply_text(display_data['global_data']['global_confirmed'])
+        update.message.reply_text('Deaths')
         update.message.reply_text(display_data['global_data']['global_deaths'])
+        update.message.reply_text('Recovered')
+        update.message.reply_text(display_data['global_data']['global_recovered'])
+        update.message.reply_text('Fatality Rate')
+        update.message.reply_text(display_data['global_data']['r_global_fatality_rate'])
+        update.message.reply_text('Percentage of Global Popluation infected')
+        update.message.reply_text(display_data['global_data']['r_global_p_of_pop_infected'])
+    
     else:
         update.message.reply_text('Give me a country to look up for. Has to be ISO country code, like TH, CH, BR. Google it bro')
         
 
-
-def get_data():
-    print('Message was sent to bot')
+#def get_data():
+#    print('Message was sent to bot')
 
 def covid_updates():
     print('Covid update engaged')
