@@ -33,7 +33,7 @@ def echo(update, context):
         display_data = get_covid_data(user_message)
         update.message.reply_text(display_data['global_data']['global_deaths'])
     else:
-        update.message.reply_text('Give me a country to look up for. Has to be ISO country code, like TH, CH, BR. Google it bro')
+        update.message.reply_text('Give me a country to lcodeook up for. Has to be ISO country code, like TH, CH, BR. Google it bro')
         
 
 
