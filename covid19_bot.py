@@ -8,10 +8,6 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters,
                           ConversationHandler)
 token = '1107891137:AAE0111kLRMx5XDUWmrjCcoloov0jZgjVLI'
 
-
-
-
-
 def start(update, context):
     update.message.reply_text(
         'Give me a country to look up for. It has to be ISO country code, like TH, CH, BR'
